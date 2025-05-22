@@ -37,7 +37,7 @@ class Settings(BaseSettings):
     # LANGCHAIN_TRACING_V2: bool = os.getenv("LANGCHAIN_TRACING_V2", "false") == "true"
     
     # # Database and Services
-    # DATABASE_URL: str = os.getenv("DATABASE_URL")
+    DATABASE_URL: str = os.getenv("DATABASE_URL")
     # GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY")
 
     # REDIS_URL: str = os.getenv("REDIS_URL")

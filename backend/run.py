@@ -5,15 +5,15 @@ import mlflow
 import json
 import asyncio
 
-from agent.content_gen import generate_content
-from agent.user_preferences import extract_user_preferences
-from agent.assess import assess_content
+from app.services.content_gen import generate_content
+from app.services.user_preferences import extract_user_preferences
+from app.services.assess import assess_content
 
-from agent.metric import generated_content_eval, user_preferences_eval, assess_content_eval
+from app.services.metric import generated_content_eval, user_preferences_eval, assess_content_eval
 
 
-mlflow.dspy.autolog()
-mlflow.set_tracking_uri('http://localhost:5000')
+# mlflow.dspy.autolog()
+# mlflow.set_tracking_uri('http://localhost:5000')
 
 lm = dspy.LM('openai/gpt-4.1-mini', api_key=os.getenv('OPENAI_API_KEY'))
 dspy.configure(lm=lm)

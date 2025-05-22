@@ -1,5 +1,9 @@
 import dspy
 from typing import Literal
+import os
+
+lm = dspy.LM('openai/gpt-4.1-mini', api_key=os.getenv('OPENAI_API_KEY'))
+dspy.settings.configure(lm=lm)
 
 class ContentGeneration(dspy.Signature):
     """Generate content of provided type about provided topic"""
@@ -14,7 +18,7 @@ class GenerateContent(dspy.Module):
 
     def forward(self, topic, content_type, user_preference):
         return self.generate_content(topic=topic, content_type=content_type, user_preference=user_preference)
-
+    
     async def aforward(self, topic, content_type, user_preference):
         return await self.generate_content.acall(topic=topic, content_type=content_type, user_preference=user_preference)
         

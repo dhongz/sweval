@@ -1,6 +1,9 @@
 import dspy
 from typing import Literal
+import os
 
+lm = dspy.LM('openai/gpt-4.1-mini', api_key=os.getenv('OPENAI_API_KEY'))
+dspy.settings.configure(lm=lm)
 
 class Assess(dspy.Signature):
     """Using the user's preferences, discern if the content is good or bad."""
